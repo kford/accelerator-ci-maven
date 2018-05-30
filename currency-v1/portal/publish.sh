@@ -5,9 +5,6 @@ echo "Jenkins Workspace: $WORKSPACE"
 echo "PWD: $PWD"
 curContext=$(ls -l)
 echo "CURRENT CONTEXT (Directories): $curContext"
-su -
-apt-get install -y jq
-echo $(jq --help)
 
 # GET AN ACCESS TOKEN
 export ACCESS_TOKEN=$(curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8" \
@@ -46,6 +43,15 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1822/content" \
    -H "Content-Type:application/x-yaml" \
    -d @currency-v1/portal/baggage-spec.json
 
+# GET EXISTING PUBLISHED BAGGAGE SPEC
+export BAGGAGE_SPEC_ID=$(curl -i -X GET "http://kevinford-eval-test.e2e.apigee.net/get-baggage-spec" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H 'X-Requested-With: XMLHttpRequest')
+echo "BAGGAGE SPEC ID IS:::::::::::::::::: $BAGGAGE_SPEC_ID"
+
+
 echo "OpenAPI Specification - BAGGAGE: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE BAGGAGE SPEC
 curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs" \
@@ -78,6 +84,14 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
    -H "If-Match: $ETAG_FLIGHTS" \
    -H "Content-Type:application/x-yaml" \
    -d @currency-v1/portal/flights-spec.json
+
+# GET EXISTING PUBLISHED FLIGHTS SPEC
+export FLIGHTS_SPEC_ID=$(curl -i -X GET "http://kevinford-eval-test.e2e.apigee.net/get-flights-spec" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H 'X-Requested-With: XMLHttpRequest')
+echo "FLIGHTS SPEC ID IS:::::::::::::::::: $FLIGHTS_SPEC_ID"
 
 echo "OpenAPI Specification - FLIGHTS: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE BAGGAGE SPEC
