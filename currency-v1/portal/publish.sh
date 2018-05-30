@@ -5,6 +5,7 @@ echo "Jenkins Workspace: $WORKSPACE"
 echo "PWD: $PWD"
 curContext=$(ls -l)
 echo "CURRENT CONTEXT (Directories): $curContext"
+su -
 apt-get install -y jq
 echo $(jq --help)
 
