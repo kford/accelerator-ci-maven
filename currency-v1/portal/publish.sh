@@ -34,7 +34,7 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1822/content" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
-   -H 'X-Requested-With: XMLHttpRequest' \
+   -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $ETAG_BAGGAGE" \
    -H "Content-Type:application/x-yaml" \
    -d @baggage-spec.json
@@ -44,7 +44,7 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
-   -H 'X-Requested-With: XMLHttpRequest' \
+   -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $ETAG_FLIGHTS" \
    -H "Content-Type:application/x-yaml" \
    -d @flights-spec.json
