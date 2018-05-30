@@ -49,7 +49,7 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1822/content" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $ETAG_BAGGAGE" \
    -H "Content-Type:application/x-yaml" \
-   -d @baggage-spec.json
+   -d @currency-v1/portal/baggage-spec.json
 
 # UPDATE THE FLIGHTS SPEC
 curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
@@ -59,4 +59,4 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $ETAG_FLIGHTS" \
    -H "Content-Type:application/x-yaml" \
-   -d @flights-spec.json
+   -d @currency-v1/portal/flights-spec.json
