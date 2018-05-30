@@ -41,6 +41,7 @@ export ETAG_FLIGHTS=$(curl -i -X GET "https://e2e.apigee.net/c3Rvc-ZG9j-1823" \
 echo "Flights ETag is: $ETAG_FLIGHTS"
 
 
+echo "OpenAPI Specification - BAGGAGE: Updating Spec Content on Apigee Edge"
 # UPDATE THE BAGGAGE SPEC
 curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1822/content" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -51,17 +52,7 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1822/content" \
    -H "Content-Type:application/x-yaml" \
    -d @currency-v1/portal/baggage-spec.json
 
-# UPDATE THE FLIGHTS SPEC
-curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
-   -H "Authorization: Bearer $ACCESS_TOKEN" \
-   -H "X-Org-Name: kevinford-eval" \
-   -H "Accept: application/json, text/plain, */*" \
-   -H "X-Requested-With: XMLHttpRequest" \
-   -H "If-Match: $ETAG_FLIGHTS" \
-   -H "Content-Type:application/x-yaml" \
-   -d @currency-v1/portal/flights-spec.json
-
-
+echo "OpenAPI Specification - BAGGAGE: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE BAGGAGE SPEC
 curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -78,5 +69,38 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/
       "anonAllowed": true,
       "specId": "baggage-spec",
       "specContent": "/c3Rvc-ZG9j-1822/content",
+      "orgname": "kevinford-eval"
+   }'
+
+
+
+echo "OpenAPI Specification - FLIGHTS: Updating Spec Content on Apigee Edge"
+# UPDATE THE FLIGHTS SPEC
+curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H "X-Requested-With: XMLHttpRequest" \
+   -H "If-Match: $ETAG_FLIGHTS" \
+   -H "Content-Type:application/x-yaml" \
+   -d @currency-v1/portal/flights-spec.json
+
+echo "OpenAPI Specification - FLIGHTS: Publishing Spec Apigee Edge Portal"
+# PUBLISH THE BAGGAGE SPEC
+curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H 'X-Requested-With: XMLHttpRequest' \
+   -H "Content-Type: application/json" \
+   -d '{
+      "title": "FlightsProduct",
+      "description": "Access flight details, schedules, cancellations, and delays.",
+      "edgeAPIProductName": "FlightsProduct",
+      "imageUrl":"/files/flights-icon.png",
+      "visibility": true,
+      "anonAllowed": true,
+      "specId": "flights-spec",
+      "specContent": "/c3Rvc-ZG9j-1823/content",
       "orgname": "kevinford-eval"
    }'
