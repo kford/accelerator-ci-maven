@@ -44,7 +44,7 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1822/content" \
    -d @currency-v1/portal/baggage-spec.json
 
 # GET EXISTING PUBLISHED BAGGAGE SPEC
-export BAGGAGE_SPEC_ID=$(curl -i -X GET "http://kevinford-eval-test.e2e.apigee.net/get-baggage-spec" \
+export BAGGAGE_SPEC_ID=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-baggage-spec" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
@@ -86,7 +86,7 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
    -d @currency-v1/portal/flights-spec.json
 
 # GET EXISTING PUBLISHED FLIGHTS SPEC
-export FLIGHTS_SPEC_ID=$(curl -i -X GET "http://kevinford-eval-test.e2e.apigee.net/get-flights-spec" \
+export FLIGHTS_SPEC_ID=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-flights-spec" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
