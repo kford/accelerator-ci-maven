@@ -3,12 +3,12 @@
 echo "PUBLISH: Developer Portal Documentation"
 echo "Jenkins Workspace: $WORKSPACE"
 echo "PWD: $PWD"
-curContext=$(find . -type d)
+curContext=$(ls -l)
 echo "########################################"
 echo "########################################"
 echo "########################################"
 echo "########################################"
-echo "CURRENT CONTEXT: $curContext"
+echo "CURRENT CONTEXT (Directories): $curContext"
 echo "########################################"
 echo "########################################"
 echo "########################################"
@@ -70,9 +70,9 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/
    -H 'X-Requested-With: XMLHttpRequest' \
    -H "Content-Type: application/json" \
    -d '{
-      "title": "Baggage API",
+      "title": "BaggageProduct",
       "description": "Access baggage details, logistics, and tracking.",
-      "edgeAPIProductName": "helloworld",
+      "edgeAPIProductName": "BaggageProduct",
       "imageUrl":"/files/baggage-icon.png",
       "visibility": true,
       "anonAllowed": true,
