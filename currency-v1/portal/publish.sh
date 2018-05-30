@@ -3,6 +3,17 @@
 echo "PUBLISH: Developer Portal Documentation"
 echo "Jenkins Workspace: $WORKSPACE"
 echo "PWD: $PWD"
+curContext=$(find . -type d)
+echo "########################################"
+echo "########################################"
+echo "########################################"
+echo "########################################"
+echo "CURRENT CONTEXT: $curContext"
+echo "########################################"
+echo "########################################"
+echo "########################################"
+echo "########################################"
+
 
 # GET AN ACCESS TOKEN
 export ACCESS_TOKEN=$(curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8" \
