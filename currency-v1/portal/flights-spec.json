@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Flights API",
+    "title": "Payments API",
     "contact": {
       "name": "Apigee",
       "email": "support@apigee.com"
@@ -12,10 +12,9 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "cosafinity-prod.apigee.net",
-  "basePath": "/v1/employees",
+  "host": "apibaas-trial.apigee.net",
+  "basePath": "/kevin/sandbox/payments",
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
@@ -27,28 +26,28 @@
   "paths": {
     "/": {
       "get": {
-        "summary": "Get all Employees",
-        "description": "This endpoint returns a list of all Employees as an array.",
+        "summary": "Get all Payments",
+        "description": "This endpoint returns a list of all Payments as an array.",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/EmployeesArray"
+              "$ref": "#/definitions/PaymentsArray"
             }
           }
         }
       },
       "post": {
-        "summary": "Create a new Employee",
-        "description": "This endpoint will create a new Employee.",
+        "summary": "Create a new Payment",
+        "description": "This endpoint will create a new Payment.",
         "parameters": [
           {
             "name": "body",
             "required": true,
-            "description": "an Employee oject",
+            "description": "an Payment oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Employee"
+              "$ref": "#/definitions/Payment"
             }
           }
         ],
@@ -56,22 +55,22 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Employee"
+              "$ref": "#/definitions/Payment"
             }
           }
         }
       }
     },
-    "/{employee-uuid}": {
+    "/{payment-uuid}": {
       "get": {
-        "summary": "Get an Employee with given UUID.",
-        "description": "This endpoint returns a Employee from a given UUID.",
+        "summary": "Get an Payment with given UUID.",
+        "description": "This endpoint returns a Payment from a given UUID.",
         "parameters": [
           {
-            "name": "employee-uuid",
+            "name": "payment-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Employee",
+            "description": "UUID of a Payment",
             "type": "integer"
           }
         ],
@@ -79,29 +78,29 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Employee"
+              "$ref": "#/definitions/Payment"
             }
           }
         }
       },
       "put": {
-        "summary": "Update an Employee with given UUID",
-        "description": "This endpoint will update an existing Employee.",
+        "summary": "Update an Payment with given UUID",
+        "description": "This endpoint will update an existing Payment.",
         "parameters": [
           {
-            "name": "employee-uuid",
+            "name": "payment-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Employee",
+            "description": "UUID of a Payment",
             "type": "integer"
           },
           {
             "name": "body",
             "required": true,
-            "description": "an Employee oject",
+            "description": "an Payment oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Employee"
+              "$ref": "#/definitions/Payment"
             }
           }
         ],
@@ -109,20 +108,20 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Employee"
+              "$ref": "#/definitions/Payment"
             }
           }
         }
       },
       "delete": {
-        "summary": "Delete an Employee with given UUID",
-        "description": "This endpoint will delete an existing Employee.",
+        "summary": "Delete an Payment with given UUID",
+        "description": "This endpoint will delete an existing Payment.",
         "parameters": [
           {
-            "name": "employee-uuid",
+            "name": "payment-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Employee",
+            "description": "UUID of a Payment",
             "type": "integer"
           }
         ],
@@ -130,7 +129,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Employee"
+              "$ref": "#/definitions/Payment"
             }
           }
         }
@@ -138,7 +137,7 @@
     }
   },
   "definitions": {
-    "EmployeesArray": {
+    "PaymentsArray": {
       "type": "array",
       "items": {
         "type": "object",
@@ -158,7 +157,7 @@
           "modified": {
             "type": "integer"
           },
-          "birthDate": {
+          "paymentAmount": {
             "type": "string"
           },
           "city": {
@@ -202,7 +201,7 @@
         }
       }
     },
-    "Employee": {
+    "Payment": {
       "type": "object",
       "properties": {
         "uuid": {
