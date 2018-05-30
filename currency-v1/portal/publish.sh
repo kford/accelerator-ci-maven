@@ -1,7 +1,8 @@
 #!/bin/bash
 
-echo "PUBLISH: Developer Portal Documentation
-echo "Workspace: $WORKSPACE"
+echo "PUBLISH: Developer Portal Documentation"
+echo "Jenkins Workspace: $WORKSPACE"
+echo "PWD: $PWD"
 
 # GET AN ACCESS TOKEN
 export ACCESS_TOKEN=$(curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8" \
@@ -29,3 +30,22 @@ export ETAG_FLIGHTS=$(curl -i -X GET "https://e2e.apigee.net/c3Rvc-ZG9j-1823" \
 echo "Flights ETag is: $ETAG_FLIGHTS"
 
 
+# UPDATE THE BAGGAGE SPEC
+curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1822/content" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H "X-Requested-With: XMLHttpRequest" \
+   -H "If-Match: $ETAG_BAGGAGE" \
+   -H "Content-Type:application/x-yaml" \
+   -d @baggage-spec.json
+
+# UPDATE THE FLIGHTS SPEC
+curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H "X-Requested-With: XMLHttpRequest" \
+   -H "If-Match: $ETAG_FLIGHTS" \
+   -H "Content-Type:application/x-yaml" \
+   -d @$WORKSPACE/flights-spec.json
