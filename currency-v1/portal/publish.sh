@@ -51,6 +51,13 @@ export BAGGAGE_SPEC_ID=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/
    -H 'X-Requested-With: XMLHttpRequest')
 echo "BAGGAGE SPEC ID IS:::::::::::::::::: $BAGGAGE_SPEC_ID"
 
+# DELETE EXISTING PUBLISHED BAGGAGE SPEC
+curl -X DELETE "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs/$BAGGAGE_SPEC_ID" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H 'X-Requested-With: XMLHttpRequest'
+
 
 echo "OpenAPI Specification - BAGGAGE: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE BAGGAGE SPEC
@@ -92,6 +99,13 @@ export FLIGHTS_SPEC_ID=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/
    -H "Accept: application/json, text/plain, */*" \
    -H 'X-Requested-With: XMLHttpRequest')
 echo "FLIGHTS SPEC ID IS:::::::::::::::::: $FLIGHTS_SPEC_ID"
+
+# DELETE EXISTING PUBLISHED FLIGHTS SPEC
+curl -X DELETE "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs/$FLIGHTS_SPEC_ID" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H 'X-Requested-With: XMLHttpRequest'
 
 echo "OpenAPI Specification - FLIGHTS: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE BAGGAGE SPEC
