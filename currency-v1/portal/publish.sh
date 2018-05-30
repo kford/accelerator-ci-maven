@@ -60,3 +60,23 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
    -H "If-Match: $ETAG_FLIGHTS" \
    -H "Content-Type:application/x-yaml" \
    -d @currency-v1/portal/flights-spec.json
+
+
+# PUBLISH THE BAGGAGE SPEC
+curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H 'X-Requested-With: XMLHttpRequest' \
+   -H "Content-Type: application/json" \
+   -d '{
+      "title": "Baggage API",
+      "description": "Access baggage details, logistics, and tracking.",
+      "edgeAPIProductName": "helloworld",
+      "imageUrl":"/files/baggage-icon.png",
+      "visibility": true,
+      "anonAllowed": true,
+      "specId": "baggage-spec",
+      "specContent": "/c3Rvc-ZG9j-1817/content",
+      "orgname": "kevinford-eval"
+   }'
