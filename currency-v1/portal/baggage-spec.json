@@ -1,0 +1,266 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Baggage API",
+    "contact": {
+      "name": "Apigee",
+      "email": "support@apigee.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "apibaas-trial.apigee.net",
+  "basePath": "/kevin/sandbox/payments",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get all Baggage",
+        "description": "This endpoint returns a list of all Baggage as an array.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BaggageArray"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Baggage",
+        "description": "This endpoint will create a new Baggage.",
+        "parameters": [
+          {
+            "name": "body",
+            "required": true,
+            "description": "an Baggage oject",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Baggage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Baggage"
+            }
+          }
+        }
+      }
+    },
+    "/{flight-uuid}": {
+      "get": {
+        "summary": "Get an Baggage with given UUID.",
+        "description": "This endpoint returns a Baggage from a given UUID.",
+        "parameters": [
+          {
+            "name": "flight-uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID of a Baggage",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Baggage"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an Baggage with given UUID",
+        "description": "This endpoint will update an existing Baggage.",
+        "parameters": [
+          {
+            "name": "flight-uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID of a Baggage",
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "required": true,
+            "description": "an Baggage oject",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Baggage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Baggage"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Baggage with given UUID",
+        "description": "This endpoint will delete an existing Baggage.",
+        "parameters": [
+          {
+            "name": "flight-uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID of a Baggage",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Baggage"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BaggageArray": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "created": {
+            "type": "integer"
+          },
+          "modified": {
+            "type": "integer"
+          },
+          "flightAmount": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "size": {
+                "type": "integer"
+              }
+            }
+          },
+          "phone": {
+            "type": "string"
+          },
+          "postal": {
+            "type": "integer"
+          },
+          "state": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Baggage": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "created": {
+          "type": "integer"
+        },
+        "modified": {
+          "type": "integer"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "size": {
+              "type": "integer"
+            }
+          }
+        },
+        "phone": {
+          "type": "string"
+        },
+        "postal": {
+          "type": "integer"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
