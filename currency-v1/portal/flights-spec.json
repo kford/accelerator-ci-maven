@@ -61,13 +61,13 @@
         }
       }
     },
-    "/{payment-uuid}": {
+    "/{flight-uuid}": {
       "get": {
         "summary": "Get an Flight with given UUID.",
         "description": "This endpoint returns a Flight from a given UUID.",
         "parameters": [
           {
-            "name": "payment-uuid",
+            "name": "flight-uuid",
             "in": "path",
             "required": true,
             "description": "UUID of a Flight",
@@ -88,7 +88,7 @@
         "description": "This endpoint will update an existing Flight.",
         "parameters": [
           {
-            "name": "payment-uuid",
+            "name": "flight-uuid",
             "in": "path",
             "required": true,
             "description": "UUID of a Flight",
@@ -118,7 +118,7 @@
         "description": "This endpoint will delete an existing Flight.",
         "parameters": [
           {
-            "name": "payment-uuid",
+            "name": "flight-uuid",
             "in": "path",
             "required": true,
             "description": "UUID of a Flight",
@@ -157,7 +157,7 @@
           "modified": {
             "type": "integer"
           },
-          "paymentAmount": {
+          "flightAmount": {
             "type": "string"
           },
           "city": {

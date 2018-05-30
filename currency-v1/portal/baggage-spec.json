@@ -61,13 +61,13 @@
         }
       }
     },
-    "/{payment-uuid}": {
+    "/{flight-uuid}": {
       "get": {
         "summary": "Get an Baggage with given UUID.",
         "description": "This endpoint returns a Baggage from a given UUID.",
         "parameters": [
           {
-            "name": "payment-uuid",
+            "name": "flight-uuid",
             "in": "path",
             "required": true,
             "description": "UUID of a Baggage",
@@ -88,7 +88,7 @@
         "description": "This endpoint will update an existing Baggage.",
         "parameters": [
           {
-            "name": "payment-uuid",
+            "name": "flight-uuid",
             "in": "path",
             "required": true,
             "description": "UUID of a Baggage",
@@ -118,7 +118,7 @@
         "description": "This endpoint will delete an existing Baggage.",
         "parameters": [
           {
-            "name": "payment-uuid",
+            "name": "flight-uuid",
             "in": "path",
             "required": true,
             "description": "UUID of a Baggage",
@@ -157,7 +157,7 @@
           "modified": {
             "type": "integer"
           },
-          "paymentAmount": {
+          "flightAmount": {
             "type": "string"
           },
           "city": {
