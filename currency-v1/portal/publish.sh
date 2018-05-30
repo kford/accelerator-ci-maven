@@ -77,6 +77,6 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/
       "visibility": true,
       "anonAllowed": true,
       "specId": "baggage-spec",
-      "specContent": "/c3Rvc-ZG9j-1817/content",
+      "specContent": "/c3Rvc-ZG9j-1822/content",
       "orgname": "kevinford-eval"
    }'
