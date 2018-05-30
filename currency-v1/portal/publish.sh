@@ -48,4 +48,4 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1823/content" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $ETAG_FLIGHTS" \
    -H "Content-Type:application/x-yaml" \
-   -d @$WORKSPACE/flights-spec.json
+   -d @flights-spec.json
