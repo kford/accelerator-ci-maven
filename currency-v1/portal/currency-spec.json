@@ -1,0 +1,266 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Currency API",
+    "contact": {
+      "name": "Apigee",
+      "email": "support@apigee.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "apibaas-trial.apigee.net",
+  "basePath": "/kevin/sandbox/payments",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get all Currency",
+        "description": "This endpoint returns a list of all Currency as an array.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CurrencyArray"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Currency",
+        "description": "This endpoint will create a new Currency.",
+        "parameters": [
+          {
+            "name": "body",
+            "required": true,
+            "description": "an Currency oject",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      }
+    },
+    "/{flight-uuid}": {
+      "get": {
+        "summary": "Get an Currency with given UUID.",
+        "description": "This endpoint returns a Currency from a given UUID.",
+        "parameters": [
+          {
+            "name": "flight-uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID of a Currency",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an Currency with given UUID",
+        "description": "This endpoint will update an existing Currency.",
+        "parameters": [
+          {
+            "name": "flight-uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID of a Currency",
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "required": true,
+            "description": "an Currency oject",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Currency with given UUID",
+        "description": "This endpoint will delete an existing Currency.",
+        "parameters": [
+          {
+            "name": "flight-uuid",
+            "in": "path",
+            "required": true,
+            "description": "UUID of a Currency",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CurrencyArray": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "created": {
+            "type": "integer"
+          },
+          "modified": {
+            "type": "integer"
+          },
+          "flightAmount": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "size": {
+                "type": "integer"
+              }
+            }
+          },
+          "phone": {
+            "type": "string"
+          },
+          "postal": {
+            "type": "integer"
+          },
+          "state": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Currency": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "created": {
+          "type": "integer"
+        },
+        "modified": {
+          "type": "integer"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "size": {
+              "type": "integer"
+            }
+          }
+        },
+        "phone": {
+          "type": "string"
+        },
+        "postal": {
+          "type": "integer"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

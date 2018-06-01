@@ -7,8 +7,8 @@ curContext=$(ls -l)
 echo "CURRENT CONTEXT (Directories): $curContext"
 
 export DEV_PORTAL_SITE=kevinford-eval-wells;
-export BAGGAGE_SPEC_ID=c3Rvc-ZG9j-1822;
-export FLIGHTS_SPEC_ID=c3Rvc-ZG9j-1823;
+export BAGGAGE_SPEC_ID=c3Rvc-ZG9j-1825;
+export FLIGHTS_SPEC_ID=c3Rvc-ZG9j-1826;
 
 
 # GET AN ACCESS TOKEN
@@ -46,7 +46,7 @@ curl -i -X PUT "https://e2e.apigee.net/$BAGGAGE_SPEC_ID/content" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $ETAG_BAGGAGE" \
    -H "Content-Type:application/x-yaml" \
-   -d @currency-v1/portal/baggage-spec.json
+   -d @currency-v1/portal/rates-spec.json
 
 # GET EXISTING PUBLISHED $SPEC_1_NAME SPEC
 export $SPEC_1_NAME_SPEC_ID=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-1" \
@@ -117,7 +117,7 @@ curl -i -X PUT "https://e2e.apigee.net/$FLIGHTS_SPEC_ID/content" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $ETAG_FLIGHTS" \
    -H "Content-Type:application/x-yaml" \
-   -d @currency-v1/portal/flights-spec.json
+   -d @currency-v1/portal/currency-spec.json
 
 echo "OpenAPI Specification - FLIGHTS: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE $SPEC_1_NAME SPEC
