@@ -3,6 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Rates API",
+    "description": "Rates API.  Retrieve current or historical exchange rates for a pair of given currencies.\n",
     "contact": {
       "name": "Apigee",
       "email": "support@apigee.com"
