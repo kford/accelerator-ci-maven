@@ -49,7 +49,7 @@ curl -i -X PUT "https://e2e.apigee.net/$BAGGAGE_SPEC_ID/content" \
    -d @currency-v1/portal/rates-spec.json
 
 # GET EXISTING PUBLISHED $SPEC_1_NAME SPEC
-export $SPEC_1_NAME_SPEC_ID=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-1" \
+export BAGGAGE_SPEC_ID=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-1" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
