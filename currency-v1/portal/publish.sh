@@ -75,7 +75,7 @@ export PORTAL_PUBLISHED_SPEC_ONE=$(curl -X GET "http://kevinford-eval-test.e2e.a
    -H 'X-Requested-With: XMLHttpRequest')
 echo "CURRENCY SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_ONE"
 
-# GET EXISTING PUBLISHED RATES SPEC
+# GET EXISTING PUBLISHED RATES SPEC FROM EDGE
 export PORTAL_PUBLISHED_SPEC_TWO=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-2" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
