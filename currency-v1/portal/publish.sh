@@ -52,6 +52,21 @@ curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1830/content" \
    -H "Content-Type:application/x-yaml" \
    -d @currency-v1/portal/currency-spec.json
 
+
+echo "OpenAPI Specification - RATES SPEC: Updating Spec Content on Apigee Edge"
+# UPDATE THE RATES SPEC
+curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1829/content" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H "X-Requested-With: XMLHttpRequest" \
+   -H "If-Match: $RATES_ETAG" \
+   -H "Content-Type:application/x-yaml" \
+   -d @currency-v1/portal/rates-spec.json
+
+
+
+
 # GET EXISTING PUBLISHED CURRENCY SPEC
 export PORTAL_PUBLISHED_SPEC_ONE=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-1" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -59,6 +74,17 @@ export PORTAL_PUBLISHED_SPEC_ONE=$(curl -X GET "http://kevinford-eval-test.e2e.a
    -H "Accept: application/json, text/plain, */*" \
    -H 'X-Requested-With: XMLHttpRequest')
 echo "CURRENCY SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_ONE"
+
+# GET EXISTING PUBLISHED RATES SPEC
+export PORTAL_PUBLISHED_SPEC_TWO=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-2" \
+   -H "Authorization: Bearer $ACCESS_TOKEN" \
+   -H "X-Org-Name: kevinford-eval" \
+   -H "Accept: application/json, text/plain, */*" \
+   -H 'X-Requested-With: XMLHttpRequest')
+echo "RATES SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_TWO"
+
+
+
 
 if [ "$PORTAL_PUBLISHED_SPEC_ONE" != "0" ]; then
     echo "FOUND CURRENCY SPEC -- CLEANING";
@@ -92,29 +118,6 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-wells/a
 
 
 
-
-
-
-
-
-echo "OpenAPI Specification - RATES SPEC: Updating Spec Content on Apigee Edge"
-# UPDATE THE RATES SPEC
-curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1829/content" \
-   -H "Authorization: Bearer $ACCESS_TOKEN" \
-   -H "X-Org-Name: kevinford-eval" \
-   -H "Accept: application/json, text/plain, */*" \
-   -H "X-Requested-With: XMLHttpRequest" \
-   -H "If-Match: $RATES_ETAG" \
-   -H "Content-Type:application/x-yaml" \
-   -d @currency-v1/portal/rates-spec.json
-
-# GET EXISTING PUBLISHED RATES SPEC
-export PORTAL_PUBLISHED_SPEC_TWO=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-2" \
-   -H "Authorization: Bearer $ACCESS_TOKEN" \
-   -H "X-Org-Name: kevinford-eval" \
-   -H "Accept: application/json, text/plain, */*" \
-   -H 'X-Requested-With: XMLHttpRequest')
-echo "RATES SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_TWO"
 
 if [ "$PORTAL_PUBLISHED_SPEC_TWO" != "0" ]; then
     echo "FOUND RATES SPEC PUBLISHED TO PORTAL -- CLEANING";
