@@ -5,6 +5,7 @@ var logglyUrl = logglyUrlScheme + '://' + logglyUrlDomain + logglyBasePath + '/l
 context.setVariable('debug.logglyUrl', logglyUrl);
 
 var log = {
+	correlationId: context.getVariable("messageid"),
 	org: context.getVariable('organization.name'),
 	env: context.getVariable('environment.name'),
 	api: context.getVariable('apiproxy.name'),
