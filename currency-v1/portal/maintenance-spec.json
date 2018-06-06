@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Maintenance API",
-    "description": "Maintenance API.  Retrieve current or historical exchange Maintenance for a pair of given currencies.\n",
+    "description": "Maintenance API.  Retrieve historical or future maintenance items.\n",
     "contact": {
       "name": "Apigee",
       "email": "support@apigee.com"
@@ -39,16 +39,16 @@
         }
       },
       "post": {
-        "summary": "Create a new Flight",
-        "description": "This endpoint will create a new Flight.",
+        "summary": "Create a new Maintenance event",
+        "description": "This endpoint will create a new event.",
         "parameters": [
           {
             "name": "body",
             "required": true,
-            "description": "an Flight oject",
+            "description": "an Maintenance oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "$ref": "#/definitions/Maintenance"
             }
           }
         ],
@@ -56,7 +56,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "$ref": "#/definitions/Maintenance"
             }
           }
         }
@@ -64,14 +64,14 @@
     },
     "/{maintenance-uuid}": {
       "get": {
-        "summary": "Get an Flight with given UUID.",
-        "description": "This endpoint returns a Flight from a given UUID.",
+        "summary": "Get maintenance with given UUID.",
+        "description": "This endpoint returns a Maintenance from a given UUID.",
         "parameters": [
           {
             "name": "maintenance-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Flight",
+            "description": "UUID of a Maintenance",
             "type": "integer"
           }
         ],
@@ -79,29 +79,29 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "$ref": "#/definitions/Maintenance"
             }
           }
         }
       },
       "put": {
-        "summary": "Update an Flight with given UUID",
-        "description": "This endpoint will update an existing Flight.",
+        "summary": "Update an Maintenance with given UUID",
+        "description": "This endpoint will update an existing Maintenance.",
         "parameters": [
           {
             "name": "maintenance-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Flight",
+            "description": "UUID of a Maintenance",
             "type": "integer"
           },
           {
             "name": "body",
             "required": true,
-            "description": "an Flight oject",
+            "description": "an Maintenance oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "$ref": "#/definitions/Maintenance"
             }
           }
         ],
@@ -109,20 +109,20 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "$ref": "#/definitions/Maintenance"
             }
           }
         }
       },
       "delete": {
-        "summary": "Delete an Flight with given UUID",
-        "description": "This endpoint will delete an existing Flight.",
+        "summary": "Delete an Maintenance with given UUID",
+        "description": "This endpoint will delete an existing Maintenance.",
         "parameters": [
           {
             "name": "maintenance-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Flight",
+            "description": "UUID of a Maintenance",
             "type": "integer"
           }
         ],
@@ -130,7 +130,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "$ref": "#/definitions/Maintenance"
             }
           }
         }
@@ -202,7 +202,7 @@
         }
       }
     },
-    "Flight": {
+    "Maintenance": {
       "type": "object",
       "properties": {
         "uuid": {
