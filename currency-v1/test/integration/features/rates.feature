@@ -30,3 +30,4 @@ Feature: Get Currency Rates Feature
 		When I request all exchange rates with GBP as the base currency for 2016-05-10
 		Then I should see GBP as the base currency
 		And I should see the rates for 2016-05-10
+    
