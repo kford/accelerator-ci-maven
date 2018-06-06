@@ -6,8 +6,8 @@ echo "PWD: $PWD"
 curContext=$(ls -l)
 echo "CURRENT CONTEXT (Directories): $curContext"
 
-#  Currency Spec is   c3Rvc-ZG9j-1830;
-#  Rates Spec    is   c3Rvc-ZG9j-1829;
+#  Currency Spec is   c3Rvc-ZG9j-1855;
+#  Rates Spec    is   c3Rvc-ZG9j-1856;
 
 
 # GET AN ACCESS TOKEN
@@ -21,7 +21,7 @@ echo "Access Token is: $ACCESS_TOKEN"
 
 
 # GET ETAG FOR CURRENCY SPEC
-export CURRENCY_ETAG=$(curl -i -X GET "https://e2e.apigee.net/c3Rvc-ZG9j-1830" \
+export CURRENCY_ETAG=$(curl -i -X GET "https://e2e.apigee.net/c3Rvc-ZG9j-1855" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "X-Org-Name: kevinford-eval" \
   -H "Accept: application/json, text/plain, */*" \
@@ -29,7 +29,7 @@ export CURRENCY_ETAG=$(curl -i -X GET "https://e2e.apigee.net/c3Rvc-ZG9j-1830" \
 echo "Currency Spec ETag is: $CURRENCY_ETAG"
 
 # GET ETAG FOR RATES SPEC
-export RATES_ETAG=$(curl -i -X GET "https://e2e.apigee.net/c3Rvc-ZG9j-1829" \
+export RATES_ETAG=$(curl -i -X GET "https://e2e.apigee.net/c3Rvc-ZG9j-1856" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "X-Org-Name: kevinford-eval" \
   -H "Accept: application/json, text/plain, */*" \
@@ -43,26 +43,26 @@ echo "Rates Spec ETag is: $RATES_ETAG"
 
 echo "OpenAPI Specification - Currency Spec: Updating Spec Content on Apigee Edge"
 # UPDATE THE Currency Spec SPEC
-curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1830/content" \
+curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1855/content" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $CURRENCY_ETAG" \
    -H "Content-Type:application/x-yaml" \
-   -d @currency-v1/portal/currency-spec.json
+   -d @currency-v1/portal/maintenance-spec.json
 
 
 echo "OpenAPI Specification - RATES SPEC: Updating Spec Content on Apigee Edge"
 # UPDATE THE RATES SPEC
-curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1829/content" \
+curl -i -X PUT "https://e2e.apigee.net/c3Rvc-ZG9j-1856/content" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $RATES_ETAG" \
    -H "Content-Type:application/x-yaml" \
-   -d @currency-v1/portal/rates-spec.json
+   -d @currency-v1/portal/inventory-spec.json
 
 
 
@@ -73,7 +73,7 @@ export PORTAL_PUBLISHED_SPEC_ONE=$(curl -X GET "http://kevinford-eval-test.e2e.a
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
    -H 'X-Requested-With: XMLHttpRequest')
-echo "CURRENCY SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_ONE"
+echo "INVENTORY SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_ONE"
 
 # GET EXISTING PUBLISHED RATES SPEC FROM EDGE
 export PORTAL_PUBLISHED_SPEC_TWO=$(curl -X GET "http://kevinford-eval-test.e2e.apigee.net/get-spec-2" \
@@ -81,7 +81,7 @@ export PORTAL_PUBLISHED_SPEC_TWO=$(curl -X GET "http://kevinford-eval-test.e2e.a
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
    -H 'X-Requested-With: XMLHttpRequest')
-echo "RATES SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_TWO"
+echo "MAINTENANCE SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_TWO"
 
 
 
@@ -96,8 +96,8 @@ if [ "$PORTAL_PUBLISHED_SPEC_ONE" != "0" ]; then
         -H 'X-Requested-With: XMLHttpRequest'
 fi
 
-echo "OpenAPI Specification - Currency Spec: Publishing Spec Apigee Edge Portal"
-# PUBLISH THE CURRENCY SPEC
+echo "OpenAPI Specification - Inventory Spec: Publishing Spec Apigee Edge Portal"
+# PUBLISH THE Maintenance SPEC
 curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
@@ -105,14 +105,14 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/
    -H 'X-Requested-With: XMLHttpRequest' \
    -H "Content-Type: application/json" \
    -d "{
-      \"title\": \"CurrencyProduct\",
-      \"description\": \"Access currency details, logistics, and tracking.\",
-      \"edgeAPIProductName\": \"CurrencyProduct\",
-      \"imageUrl\":\"/files/currency-icon.png\",
+      \"title\": \"MaintenanceProduct\",
+      \"description\": \"Access maintenance details, logistics, and tracking.\",
+      \"edgeAPIProductName\": \"MaintenanceProduct\",
+      \"imageUrl\":\"/files/maintenance-icon.png\",
       \"visibility\": true,
       \"anonAllowed\": true,
-      \"specId\": \"currency-spec\",
-      \"specContent\": \"/c3Rvc-ZG9j-1830/content\",
+      \"specId\": \"maintenance-spec\",
+      \"specContent\": \"/c3Rvc-ZG9j-1855/content\",
       \"orgname\": \"kevinford-eval\"
    }"
 
@@ -138,13 +138,13 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/
    -H 'X-Requested-With: XMLHttpRequest' \
    -H "Content-Type: application/json" \
    -d "{
-      \"title\": \"RatesProduct\",
-      \"description\": \"Access rate details, schedules, movements, and trends.\",
-      \"edgeAPIProductName\": \"RatesProduct\",
-      \"imageUrl\":\"/files/exchange-icon.png\",
+      \"title\": \"InventoryProduct\",
+      \"description\": \"Access inventory details, schedules, movements, and trends.\",
+      \"edgeAPIProductName\": \"InventoryProduct\",
+      \"imageUrl\":\"/files/inventory-icon.png\",
       \"visibility\": true,
       \"anonAllowed\": true,
       \"specId\": \"rates-spec\",
-      \"specContent\": \"/c3Rvc-ZG9j-1829/content\",
+      \"specContent\": \"/c3Rvc-ZG9j-1856/content\",
       \"orgname\": \"kevinford-eval\"
    }"

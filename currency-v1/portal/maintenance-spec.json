@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Inventory API",
-    "description": "Inventory API.  Given a locale this API can return any accepted currencies.\n",
+    "title": "Maintenance API",
+    "description": "Maintenance API.  Retrieve current or historical exchange Maintenance for a pair of given currencies.\n",
     "contact": {
       "name": "Apigee",
       "email": "support@apigee.com"
@@ -27,28 +27,28 @@
   "paths": {
     "/": {
       "get": {
-        "summary": "Get all Inventory",
-        "description": "This endpoint returns a list of all Inventory as an array.",
+        "summary": "Get all Maintenance",
+        "description": "This endpoint returns a list of all Maintenance as an array.",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/CurrencyArray"
+              "$ref": "#/definitions/RatesArray"
             }
           }
         }
       },
       "post": {
-        "summary": "Create a new Inventory",
-        "description": "This endpoint will create a new Inventory.",
+        "summary": "Create a new Flight",
+        "description": "This endpoint will create a new Flight.",
         "parameters": [
           {
             "name": "body",
             "required": true,
-            "description": "an Inventory oject",
+            "description": "an Flight oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Flight"
             }
           }
         ],
@@ -56,22 +56,22 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Flight"
             }
           }
         }
       }
     },
-    "/{Inventory-uuid}": {
+    "/{maintenance-uuid}": {
       "get": {
-        "summary": "Get an Inventory with given UUID.",
-        "description": "This endpoint returns a Inventory from a given UUID.",
+        "summary": "Get an Flight with given UUID.",
+        "description": "This endpoint returns a Flight from a given UUID.",
         "parameters": [
           {
-            "name": "Inventory-uuid",
+            "name": "maintenance-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Inventory",
+            "description": "UUID of a Flight",
             "type": "integer"
           }
         ],
@@ -79,29 +79,29 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Flight"
             }
           }
         }
       },
       "put": {
-        "summary": "Update an Inventory with given UUID",
-        "description": "This endpoint will update an existing Inventory.",
+        "summary": "Update an Flight with given UUID",
+        "description": "This endpoint will update an existing Flight.",
         "parameters": [
           {
-            "name": "Inventory-uuid",
+            "name": "maintenance-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Inventory",
+            "description": "UUID of a Flight",
             "type": "integer"
           },
           {
             "name": "body",
             "required": true,
-            "description": "an Inventory oject",
+            "description": "an Flight oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Flight"
             }
           }
         ],
@@ -109,20 +109,20 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Flight"
             }
           }
         }
       },
       "delete": {
-        "summary": "Delete an Inventory with given UUID",
-        "description": "This endpoint will delete an existing Inventory.",
+        "summary": "Delete an Flight with given UUID",
+        "description": "This endpoint will delete an existing Flight.",
         "parameters": [
           {
-            "name": "Inventory-uuid",
+            "name": "maintenance-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Inventory",
+            "description": "UUID of a Flight",
             "type": "integer"
           }
         ],
@@ -130,7 +130,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Flight"
             }
           }
         }
@@ -138,7 +138,7 @@
     }
   },
   "definitions": {
-    "CurrencyArray": {
+    "RatesArray": {
       "type": "array",
       "items": {
         "type": "object",
@@ -158,7 +158,7 @@
           "modified": {
             "type": "integer"
           },
-          "currencyAmount": {
+          "rateAmount": {
             "type": "string"
           },
           "city": {
@@ -202,7 +202,7 @@
         }
       }
     },
-    "Inventory": {
+    "Flight": {
       "type": "object",
       "properties": {
         "uuid": {
