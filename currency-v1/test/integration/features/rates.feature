@@ -37,7 +37,7 @@ Feature: Get Currency Rates Feature
 
 	Scenario: I should get an error for very old date
 		When I request all exchange rates for 1940-01-01
-		Then I should get a 400 error with "Date too old" message and code "400.01.001"
+		Then I should get a 400 error with "Invalid date" message and code "400.01.001"
 
 	Scenario Outline: I should get an error for invalid date format
 		When I request all exchange rates for <invalid_date>
