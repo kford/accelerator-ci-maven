@@ -89,7 +89,7 @@ echo "RATES SPEC SPEC ID IS:::::::::::::::::: $PORTAL_PUBLISHED_SPEC_TWO"
 if [ "$PORTAL_PUBLISHED_SPEC_ONE" != "0" ]; then
     echo "FOUND CURRENCY SPEC -- CLEANING";
     # DELETE EXISTING PUBLISHED $SPEC_1_NAME SPEC
-    curl -X DELETE "https://e2e.apigee.net/portals/api/sites/kevinford-eval-wells/apidocs/$PORTAL_PUBLISHED_SPEC_ONE" \
+    curl -X DELETE "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs/$PORTAL_PUBLISHED_SPEC_ONE" \
         -H "Authorization: Bearer $ACCESS_TOKEN" \
         -H "X-Org-Name: kevinford-eval" \
         -H "Accept: application/json, text/plain, */*" \
@@ -98,7 +98,7 @@ fi
 
 echo "OpenAPI Specification - Currency Spec: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE CURRENCY SPEC
-curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-wells/apidocs" \
+curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
@@ -122,7 +122,7 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-wells/a
 if [ "$PORTAL_PUBLISHED_SPEC_TWO" != "0" ]; then
     echo "FOUND RATES SPEC PUBLISHED TO PORTAL -- CLEANING";
     # DELETE EXISTING PUBLISHED RATES SPEC
-    curl -X DELETE "https://e2e.apigee.net/portals/api/sites/kevinford-eval-wells/apidocs/$PORTAL_PUBLISHED_SPEC_TWO" \
+    curl -X DELETE "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs/$PORTAL_PUBLISHED_SPEC_TWO" \
         -H "Authorization: Bearer $ACCESS_TOKEN" \
         -H "X-Org-Name: kevinford-eval" \
         -H "Accept: application/json, text/plain, */*" \
@@ -131,7 +131,7 @@ fi
 
 echo "OpenAPI Specification - Rates Spec: Publishing Spec Apigee Edge Portal"
 # PUBLISH THE RATES SPEC
-curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-wells/apidocs" \
+curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/apidocs" \
    -H "Authorization: Bearer $ACCESS_TOKEN" \
    -H "X-Org-Name: kevinford-eval" \
    -H "Accept: application/json, text/plain, */*" \
