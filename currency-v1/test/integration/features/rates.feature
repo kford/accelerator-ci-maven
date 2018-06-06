@@ -22,8 +22,8 @@ Feature: Get Currency Rates Feature
 			| requested_date | response_date |
 			| 2016-06-14     | 2016-06-14    |
 			| 2016-06-13     | 2016-06-13    |
-			| 2016-06-12     | 2016-06-10    |
-			| 2016-06-11     | 2016-06-10    |
+			| 2016-06-12     | 2016-06-12    |
+			| 2016-06-11     | 2016-06-11    |
 			| 2016-06-10     | 2016-06-10    |
 
 	Scenario: I should be able to set a base currency and exchange day
