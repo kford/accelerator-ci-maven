@@ -144,7 +144,7 @@ curl -i -X POST "https://e2e.apigee.net/portals/api/sites/kevinford-eval-boeing/
       \"imageUrl\":\"/files/inventory-icon.png\",
       \"visibility\": true,
       \"anonAllowed\": true,
-      \"specId\": \"rates-spec\",
+      \"specId\": \"inventory-spec\",
       \"specContent\": \"/c3Rvc-ZG9j-1856/content\",
       \"orgname\": \"kevinford-eval\"
    }"
