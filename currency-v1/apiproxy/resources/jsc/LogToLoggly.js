@@ -2,6 +2,7 @@ var logglyUrlScheme = context.getVariable('flow.apigee.originalRequest.header.X-
 var logglyUrlDomain = context.getVariable('flow.apigee.originalRequest.header.Host');
 var logglyBasePath = context.getVariable('proxy.basepath');
 var logglyUrl = logglyUrlScheme + '://' + logglyUrlDomain + logglyBasePath + '/logs';
+context.setVariable('foo', 'bar');
 context.setVariable('debug.logglyUrl', logglyUrl);
 
 var log = {
