@@ -6,6 +6,7 @@ context.setVariable('foo', 'bar');
 context.setVariable('debug.logglyUrl', logglyUrl);
 
 var log = {
+	foo: context.getVariable('foo'),
 	org: context.getVariable('organization.name'),
 	env: context.getVariable('environment.name'),
 	api: context.getVariable('apiproxy.name'),
