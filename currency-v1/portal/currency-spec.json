@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Inventory API",
-    "description": "Inventory API.  Given a locale this API can return any accepted currencies.\n",
+    "title": "Currency API",
+    "description": "Currency API.  Given a locale this API can return any accepted currencies.\n",
     "contact": {
       "name": "Apigee",
       "email": "support@apigee.com"
@@ -27,8 +27,8 @@
   "paths": {
     "/": {
       "get": {
-        "summary": "Get all Inventory",
-        "description": "This endpoint returns a list of all Inventory as an array.",
+        "summary": "Get all Currency",
+        "description": "This endpoint returns a list of all Currency as an array.",
         "responses": {
           "200": {
             "description": "OK",
@@ -39,16 +39,16 @@
         }
       },
       "post": {
-        "summary": "Create a new Inventory",
-        "description": "This endpoint will create a new Inventory.",
+        "summary": "Create a new Currency",
+        "description": "This endpoint will create a new Currency.",
         "parameters": [
           {
             "name": "body",
             "required": true,
-            "description": "an Inventory oject",
+            "description": "an Currency oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Currency"
             }
           }
         ],
@@ -56,22 +56,22 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Currency"
             }
           }
         }
       }
     },
-    "/{Inventory-uuid}": {
+    "/{Currency-uuid}": {
       "get": {
-        "summary": "Get an Inventory with given UUID.",
-        "description": "This endpoint returns a Inventory from a given UUID.",
+        "summary": "Get an Currency with given UUID.",
+        "description": "This endpoint returns a Currency from a given UUID.",
         "parameters": [
           {
-            "name": "Inventory-uuid",
+            "name": "Currency-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Inventory",
+            "description": "UUID of a Currency",
             "type": "integer"
           }
         ],
@@ -79,29 +79,29 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Currency"
             }
           }
         }
       },
       "put": {
-        "summary": "Update an Inventory with given UUID",
-        "description": "This endpoint will update an existing Inventory.",
+        "summary": "Update an Currency with given UUID",
+        "description": "This endpoint will update an existing Currency.",
         "parameters": [
           {
-            "name": "Inventory-uuid",
+            "name": "Currency-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Inventory",
+            "description": "UUID of a Currency",
             "type": "integer"
           },
           {
             "name": "body",
             "required": true,
-            "description": "an Inventory oject",
+            "description": "an Currency oject",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Currency"
             }
           }
         ],
@@ -109,20 +109,20 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Currency"
             }
           }
         }
       },
       "delete": {
-        "summary": "Delete an Inventory with given UUID",
-        "description": "This endpoint will delete an existing Inventory.",
+        "summary": "Delete an Currency with given UUID",
+        "description": "This endpoint will delete an existing Currency.",
         "parameters": [
           {
-            "name": "Inventory-uuid",
+            "name": "Currency-uuid",
             "in": "path",
             "required": true,
-            "description": "UUID of a Inventory",
+            "description": "UUID of a Currency",
             "type": "integer"
           }
         ],
@@ -130,7 +130,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Inventory"
+              "$ref": "#/definitions/Currency"
             }
           }
         }
@@ -202,7 +202,7 @@
         }
       }
     },
-    "Inventory": {
+    "Currency": {
       "type": "object",
       "properties": {
         "uuid": {
