@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Currency API",
-    "description": "Currency API.  Given any locale this API returns any accepted currencies.\n",
+    "description": "Currency API spec.  Given any locale this API returns any accepted currencies.\n",
     "contact": {
       "name": "Apigee",
       "email": "support@apigee.com"

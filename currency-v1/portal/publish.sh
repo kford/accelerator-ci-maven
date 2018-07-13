@@ -5,7 +5,7 @@ echo -e "\n\nJenkins Workspace: $WORKSPACE"
 echo -e "\n\nPWD: $PWD"
 curContext=$(ls -l)
 echo -e "\n\nCURRENT CONTEXT (Directories): $curContext"
-SITE_NAME=pandora
+SITE_NAME=albertsons
 
 # GET ACCESS TOKEN
 export ACCESS_TOKEN=$(curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8" \
