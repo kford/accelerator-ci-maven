@@ -7,7 +7,7 @@ curContext=$(ls -l)
 echo -e "\n\nCURRENT CONTEXT (Directories): $curContext"
 SITE_NAME=pandora
 
-# GET AN ACCESS TOKEN
+# GET ACCESS TOKEN
 export ACCESS_TOKEN=$(curl -H "Content-Type:application/x-www-form-urlencoded;charset=utf-8" \
   -H "Accept: application/json;charset=utf-8" \
   -H "Authorization: Basic ZWRnZWNsaTplZGdlY2xpc2VjcmV0" \
