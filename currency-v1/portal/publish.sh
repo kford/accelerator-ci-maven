@@ -65,7 +65,7 @@ curl -i -X PUT "https://apigee.com$CURRENCY_SPEC_PATH_SEGMENT/content" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $CURRENCY_ETAG" \
    -H "Content-Type:application/x-yaml" \
-   -d @currency-spec.json
+   -d @currency-v1/portal/currency-spec.json
 
 echo -e "\n\nOpenAPI Specification - Rates Spec: Updating Spec Content on Apigee Edge"
 # UPDATE THE Rates Spec
@@ -76,7 +76,7 @@ curl -i -X PUT "https://apigee.com$RATES_SPEC_PATH_SEGMENT/content" \
    -H "X-Requested-With: XMLHttpRequest" \
    -H "If-Match: $RATES_ETAG" \
    -H "Content-Type:application/x-yaml" \
-   -d @rates-spec.json
+   -d @currency-v1/portal/rates-spec.json
 
 
 
