@@ -8,6 +8,7 @@ context.setVariable('debug.logglyUrl', logglyUrl);
 //correlationId: context.getVariable('messageid'),
 
 var log = {
+        unid: context.getVariable('messageid'),
 	correlationId: context.getVariable('messageid'),
 	org: context.getVariable('organization.name'),
 	env: context.getVariable('environment.name'),
